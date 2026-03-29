@@ -20,7 +20,7 @@ mongoose
 const app = express();
 app.use(cors({
   origin: [
-    'https://mern-real-estate-frontend-eta.vercel.app/',
+    'https://mern-real-estate-frontend-eta.vercel.app',
     'https://localhost:5173'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
