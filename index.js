@@ -20,7 +20,7 @@ mongoose
 const app = express();
 app.use(cors({
   origin: [
-    'https://mern-real-estate-frontend-one.vercel.app',
+    'https://mern-real-estate-frontend-gamma.vercel.app',
     'http://localhost:5173'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -43,6 +43,8 @@ app.use((err, req, res, next) => {
   return res.status(statusCode).json({ success: false, statusCode, message });
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
