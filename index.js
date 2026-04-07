@@ -18,14 +18,22 @@ mongoose
   });
 
 const app = express();
-app.use(cors({
-  origin: [
-    'https://mern-real-estate-frontend-gamma.vercel.app',
-    'http://localhost:5173'
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
+
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+  next();
+});
+
+app.use(
+  cors({
+    origin: [
+      "https://mern-real-estate-frontend-gamma.vercel.app",
+      "http://localhost:5173",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(cookieParser());
@@ -33,7 +41,7 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
 
-app.get("/", (req, res)=>{
+app.get("/", (req, res) => {
   res.send("API is working");
 });
 
